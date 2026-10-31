@@ -75,7 +75,7 @@ a {
   border-bottom: 1px solid var(--line);
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 .brand {
   display: flex;
@@ -840,6 +840,320 @@ select {
   color: #fff;
   padding: 12px 15px;
   font-size: 12px;
+}
+
+.tonal-map {
+  padding: 8px 0 42px;
+}
+.tonal-map-toolbar {
+  display: flex;
+  align-items: end;
+  gap: 22px;
+  margin-bottom: 30px;
+}
+.tonal-map-toolbar label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: var(--muted);
+  font: 10px "DM Mono", monospace;
+  text-transform: uppercase;
+}
+.tonal-map-toolbar select,
+.tonal-emotion select {
+  border: 1px solid var(--line);
+  background: var(--panel);
+  color: var(--ink);
+  padding: 9px 28px 9px 11px;
+  font-size: 13px;
+  min-width: 150px;
+}
+.step-control {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--muted);
+  font: 10px "DM Mono", monospace;
+  text-transform: uppercase;
+}
+.step-control strong {
+  color: var(--ink);
+  font-size: 16px;
+  min-width: 18px;
+  text-align: center;
+}
+.step-control button {
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  background: var(--ink);
+  color: var(--page);
+}
+.step-control button:disabled {
+  opacity: .3;
+  cursor: not-allowed;
+}
+.tonal-map-note {
+  margin-left: auto;
+  color: var(--muted);
+  font: 11px "DM Mono", monospace;
+}
+.tonal-map-board {
+  position: relative;
+  display: flex;
+  align-items: start;
+  justify-content: space-evenly;
+  overflow-x: auto;
+  padding: 82px 24px 92px;
+}
+.tonal-map-line {
+  display: none;
+}
+.tonal-map-step {
+  position: relative;
+  display: flex;
+  align-items: start;
+  flex: 0 0 185px;
+  min-width: 185px;
+}
+.tonal-chord-card {
+  position: relative;
+  z-index: 1;
+  width: 150px;
+  height: 150px;
+  flex: 0 0 150px;
+  padding: 13px 10px 12px;
+  background: #ff8f70;
+  color: #141414;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-shadow: 5px 5px 0 #141414;
+  transition: transform 180ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 180ms ease;
+}
+.tonal-chord-card:hover {
+  z-index: 5;
+  transform: translateY(-4px) rotate(-1deg);
+  box-shadow: 8px 8px 0 #141414;
+}
+.tonal-chord-card:focus-within {
+  z-index: 5;
+}
+.tonal-chord-card.is-start {
+  background: #ff8f70;
+}
+.tonal-map-step:nth-child(3) .tonal-chord-card {
+  background: #b9ec62;
+}
+.tonal-map-step:nth-child(4) .tonal-chord-card {
+  background: #78b9fa;
+}
+.tonal-map-step:nth-child(5) .tonal-chord-card {
+  background: #d2a8ff;
+}
+.tonal-map-step:nth-child(6) .tonal-chord-card {
+  background: #ff9fca;
+}
+.tonal-map-step:nth-child(7) .tonal-chord-card {
+  background: #62d9c2;
+}
+.tonal-map-step:nth-child(8) .tonal-chord-card {
+  background: #ffbd59;
+}
+.degree-picker {
+  position: relative;
+  margin: -4px -14px 4px;
+  padding: 8px 14px;
+}
+.degree-picker-trigger {
+  width: 100%;
+  padding: 0;
+  background: transparent;
+  color: #141414;
+}
+.degree-picker-trigger strong {
+  display: block;
+  font-size: 45px;
+  line-height: .9;
+  letter-spacing: -.08em;
+}
+.degree-picker-menu {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  z-index: 100;
+  top: calc(100% + 8px);
+  left: 50%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 3px;
+  width: 126px;
+  padding: 7px;
+  background: #141414;
+  box-shadow: 4px 4px 0 #fff;
+  transform: translate(-50%, -5px);
+  transition: opacity .15s ease, transform .15s ease, visibility 0s linear .15s;
+}
+.degree-picker:hover .degree-picker-menu,
+.degree-picker:focus-within .degree-picker-menu {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, 0);
+  transition-delay: 0s;
+}
+.degree-picker-menu button {
+  padding: 8px 4px;
+  background: #fff;
+  color: #141414;
+  font:
+    500 11px "DM Mono",
+    monospace;
+  letter-spacing: 0.02em;
+}
+.degree-picker-menu button:hover,
+.degree-picker-menu button.selected {
+  background: #f7df34;
+  color: #141414;
+  opacity: 1;
+}
+.tonal-chord-name {
+  display: block;
+  font: 10px "DM Mono", monospace;
+  text-transform: uppercase;
+}
+.tonal-emotion {
+  position: absolute;
+  z-index: 2;
+  left: 112px;
+  width: 170px;
+  height: 78px;
+  margin: 0;
+  padding: 12px 18px;
+  background: #fff4c2;
+  transform: rotate(-1deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 5px 5px 0 #141414;
+  transition: transform 180ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 180ms ease;
+}
+.tonal-emotion:hover {
+  transform: translateY(-3px) rotate(1deg);
+  box-shadow: 8px 8px 0 #141414;
+}
+.tonal-emotion.emotion-top {
+  top: -64px;
+}
+.tonal-emotion.emotion-bottom {
+  top: 136px;
+}
+.tonal-map-step:nth-child(3) .tonal-emotion {
+  background: #dff6b0;
+}
+.tonal-map-step:nth-child(4) .tonal-emotion {
+  background: #d8ecff;
+}
+.tonal-map-step:nth-child(5) .tonal-emotion {
+  background: #eedcff;
+}
+.tonal-map-step:nth-child(6) .tonal-emotion {
+  background: #ffe0ed;
+}
+.tonal-map-step:nth-child(7) .tonal-emotion {
+  background: #d5f7ef;
+}
+.tonal-map-step:nth-child(8) .tonal-emotion {
+  background: #ffe5b8;
+}
+.emotion-picker {
+  position: relative;
+  width: 145px;
+}
+.emotion-picker-trigger {
+  width: 100%;
+  min-height: 42px;
+  padding: 8px 10px;
+  border: 2px solid #141414;
+  background: #fff;
+  color: #141414;
+  font:
+    500 12px "Space Grotesk",
+    sans-serif;
+  letter-spacing: 0.04em;
+  line-height: 1.25;
+  text-transform: uppercase;
+}
+.emotion-picker-menu {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  z-index: 6;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  display: grid;
+  gap: 4px;
+  width: 205px;
+  padding: 8px;
+  background: #141414;
+  box-shadow: 5px 5px 0 #fff;
+  transform: translate(-50%, 5px) rotate(1deg);
+  transition: opacity .15s ease, transform .15s ease, visibility 0s linear .15s;
+}
+.emotion-picker:hover .emotion-picker-menu,
+.emotion-picker:focus-within .emotion-picker-menu {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, 0) rotate(1deg);
+  transition-delay: 0s;
+}
+.emotion-picker-menu button {
+  padding: 9px 10px;
+  border-left: 5px solid hsl(var(--emotion-hue) 85% 65%);
+  background: hsl(var(--emotion-hue) 85% 88%);
+  color: #141414;
+  font:
+    500 12px "Space Grotesk",
+    sans-serif;
+  letter-spacing: 0.04em;
+  line-height: 1.25;
+  text-align: left;
+  text-transform: uppercase;
+}
+.emotion-picker-menu button:hover,
+.emotion-picker-menu button.selected {
+  background: #f7df34;
+  border-left-color: #141414;
+}
+.emotion-top .emotion-picker-menu {
+  top: calc(100% + 8px);
+  bottom: auto;
+  transform: translate(-50%, -5px) rotate(1deg);
+}
+.emotion-top .emotion-picker:hover .emotion-picker-menu,
+.emotion-top .emotion-picker:focus-within .emotion-picker-menu {
+  transform: translate(-50%, 0) rotate(1deg);
+}
+.tonal-map-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 12px;
+}
+@media (max-width: 760px) {
+  .tonal-map-toolbar {
+    flex-wrap: wrap;
+  }
+  .tonal-map-note {
+    width: 100%;
+    margin-left: 0;
+  }
 }
 .prompt-strip {
   grid-column: 1 / -1;

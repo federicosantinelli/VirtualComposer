@@ -21,6 +21,7 @@ import { BeatsTool } from "./features/beats/BeatsTool";
 import { ChordsTool } from "./features/chords/ChordsTool";
 import { IdeasTool } from "./features/ideas/IdeasTool";
 import { MelodiesTool } from "./features/melodies/MelodiesTool";
+import { TonalMapTool } from "./features/tonal-map/TonalMapTool";
 import type { ToolId } from "./shared/types";
 
 const tools: {
@@ -48,9 +49,17 @@ const tools: {
     icon: "⌁",
   },
   {
+    id: "tonal-map",
+    label: "Tonal Map",
+    kicker: "03 / Emotion",
+    description: "Draw the feeling between every chord.",
+    accent: "yellow",
+    icon: "↝",
+  },
+  {
     id: "beats",
     label: "Beat Machine",
-    kicker: "03 / Rhythm",
+    kicker: "04 / Rhythm",
     description: "Give your idea a pulse and a pocket.",
     accent: "blue",
     icon: "▦",
@@ -58,7 +67,7 @@ const tools: {
   {
     id: "ideas",
     label: "Idea Blender",
-    kicker: "04 / Wildcards",
+    kicker: "05 / Wildcards",
     description: "Shake the box. Keep what sparks.",
     accent: "yellow",
     icon: "✳",
@@ -188,7 +197,7 @@ function Home() {
       </div>
       <div className="tools-heading">
         <span>Pick a door</span>
-        <span className="tools-count">04 instruments inside</span>
+        <span className="tools-count">05 instruments inside</span>
       </div>
       <div className="tool-grid">
         {tools.map((item, index) => (
@@ -236,6 +245,7 @@ function ToolView({
   const toolContent = {
     melodies: <MelodiesTool />,
     chords: <ChordsTool />,
+    "tonal-map": <TonalMapTool />,
     beats: <BeatsTool />,
     ideas: <IdeasTool />,
   }[tool.id];

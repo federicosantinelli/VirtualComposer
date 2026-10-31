@@ -1,4 +1,4 @@
-export type ToolId = "melodies" | "chords" | "beats" | "ideas";
+export type ToolId = "melodies" | "chords" | "tonal-map" | "beats" | "ideas";
 
 export type MidiNote = {
   pitch: number;
